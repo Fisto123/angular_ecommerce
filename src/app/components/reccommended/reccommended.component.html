@@ -1,0 +1,27 @@
+<div class="w-full h-auto max-w-[1120px] mx-auto">
+  <h4 class="font-bold p-5 border-b-2 border-b-gray">RECCOMENDED FOR YOU</h4>
+  <div *ngIf="loading" class="mx-auto text-center">
+    <p-progressSpinner
+      styleClass="w-4rem h-4rem"
+      strokeWidth="8"
+      fill="var(--surface-ground)"
+      animationDuration=".5s"
+    ></p-progressSpinner>
+  </div>
+  <div
+    class="w-full py-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-2 mx-auto"
+  >
+    <ng-container
+      *ngFor="let item of reccomendedProducts$ | async | slice : 0 : 6"
+    >
+      <div class="" [routerLink]="['product', item._id]">
+        <app-card
+          class="w-52 h-64"
+          [title]="item.name"
+          [img]="item.images[0]"
+          [price]="item.price"
+        ></app-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

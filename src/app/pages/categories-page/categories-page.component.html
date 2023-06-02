@@ -1,0 +1,113 @@
+<div class="w-full h-auto pb-20">
+  <div class="max-w-[1240px] mx-auto">
+    <div class="mt-10 py-7 max-w-[60px]">
+      <ul
+        class="flex justify-between font-semi-bold text-gray-600 gap-2 font-semibold"
+      >
+        <li>Home</li>
+        <li>/</li>
+        <li>Products</li>
+      </ul>
+    </div>
+    <div class="grid md:grid-cols-3 bg-white h-auto gap-7">
+      <div
+        class="md:col-span-1 sm:col-span-2 h-full sm:w-full w-full shadow-xl rounded-lg p-4 xs:mx-auto"
+      >
+        <div class="flex flex-col">
+          <h3 class="text-gray-600 font-bold py-2 sm:mx-auto md:m-0">
+            CATEGORIES
+          </h3>
+          <p
+            class="font-bold text-black text-2xl py-2 sm:mx-auto md:m-0 uppercase"
+          >
+            {{ paramValue }}
+          </p>
+          <p class="pb-4 font-gray-600 sm:mx-auto md:m-0">{{ paramValue }}</p>
+        </div>
+        <form (ngSubmit)="updateForm()" #myForm="ngForm">
+          <div class="flex flex-col py-4 max-w-[400px] sm:mx-auto md:m-0">
+            <h3 class="font-bold pb-4">Price</h3>
+            <div class="flex justify-between">
+              <div class="">
+                <input
+                  name="min"
+                  placeholder="Min"
+                  [(ngModel)]="price.min"
+                  type="number"
+                  class="sm:w-full border p-1 border-gray-400 md:w-[95px] rounded-md"
+                />
+              </div>
+              <div>
+                <h3 class="font-bold px-3">to</h3>
+              </div>
+              <div>
+                <input
+                  name="max"
+                  [(ngModel)]="price.max"
+                  placeholder="Max"
+                  type="number"
+                  class="sm:w-full p-1 border border-gray-400 md:w-[95px] rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-full my-2 py-5 max-w-[400px] mx-auto md:m-0">
+            <button
+              class="text-white bg-[#33A0FF] p-3 w-full rounded-lg"
+              type="submit"
+            >
+              APPLY
+            </button>
+          </div>
+        </form>
+
+        <div class="py-3 max-w-[400px] mx-auto">
+          <div class="flex justify-between">
+            <h3 class="font-bold">Brand</h3>
+            <!-- <BsArrowDownCircle /> -->
+          </div>
+          <div class="flex justify-between py-9">
+            <h3 class="font-bold">Color</h3>
+            <!-- <BsArrowDownCircle /> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 h-full w-full shadow-xl rounded-lg pb-20">
+        <div class="flex flex-col shadow-lg p-4 m-3 rounded-lg">
+          <div class="flex justify-between">
+            <h3 class="text-gray-600 font-bold">
+              {{ productsLen || 0 }} product(s) found
+            </h3>
+            <select (change)="setSort($event)">
+              <option value="disabled">sort</option>
+              <option value="price">sort by price</option>
+              <option value="createdAt">sort by arrival</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="py-4 mx-auto text-center uppercase text-3xl text-white"
+          *ngIf="error$"
+        >
+          <h1 class="bg-red-500 uppercase">
+            {{ error$ }}
+          </h1>
+        </div>
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 p-2 gap-10">
+          <ng-container *ngIf="products$ | async as products">
+            <div *ngFor="let item of products">
+              <div [routerLink]="['/product', item._id]">
+                <app-card
+                  class="w-42 h-44"
+                  [title]="item.name"
+                  [img]="item.images[0]"
+                  [price]="item.price"
+                ></app-card>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

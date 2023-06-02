@@ -1,0 +1,62 @@
+<div
+  class="text-white bg-[#FFFFFF] shadow-xl items-center h-[64px] sticky top-0 z-10"
+>
+  <div
+    class="items-center max-w-[1240px] w-full mx-auto px-4 py-3 flex justify-between"
+  >
+    <div class="items-center">
+      <img src="/assets/ORION.png" alt="" class="items-center" routerLink="" />
+    </div>
+    <div class="flex text-center">
+      <ul class="s gap-7 text-center hidden lg:flex">
+        <li
+          class="w-[118px] h-[27px] font-[400] text-[#000000] text-[20px] cursor-pointer"
+          routerLink=""
+        >
+          HOME
+        </li>
+        <li
+          class="w-[118px] h-[27px] font-[400] text-[#000000] text-[20px] cursor-pointer"
+        >
+          CATEGORIES
+        </li>
+        <li
+          class="w-[118px] h-[27px] font-[400] text-[#000000] text-[20px] cursor-pointer"
+        >
+          CONTACTS
+        </li>
+
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="search......"
+            class="w-[207px] h-[30px] rounded-md text-black px-8 border-2 border-gray-200"
+          />
+        </div>
+      </ul>
+      <div
+        class="relative items-center justify-center my-1 ml-4"
+        routerLink="cart"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26"
+          height="46"
+          fill="currentColor"
+          class="bi bi-bag-dash-fill text-orange-300 w-12"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"
+          />
+        </svg>
+        <h3
+          class="absolute top-[-20px] text-xl right-0 text-purple-800 font-extrabold"
+        >
+          {{ count }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

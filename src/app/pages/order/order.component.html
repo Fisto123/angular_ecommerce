@@ -1,0 +1,166 @@
+<div class="w-full md:h-auto py-10 relative">
+  <div class="max-w-[1340px] mx-auto pb-14">
+    <h3
+      class="text-red-700 font-bold mx-auto items-center"
+      *ngIf="orderLength === 0"
+    >
+      PLACE YOUR ORDERS AND FILL IN YOUR INFORMATION
+    </h3>
+    <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-2">
+      <div class="col-span-2">
+        <div class="flex relative py-10 mt-5 shadow-xl w-full h-20">
+          <Link to="/products" />
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+              />
+            </svg>
+            <h3 class="font-bold text-sm cursor-pointer" routerLink="">
+              Back to Shopping
+            </h3>
+          </div>
+
+          <div class="absolute right-0">
+            <svg
+              (click)="deleteOrder()"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-archive text-red-600"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div
+          class="shadow-xl h-auto mt-12 relative"
+          *ngIf="orderLength === undefined"
+        >
+          <div class="flex flex-col m-7">
+            <div class="relative pb-5 border-b-2 border-gray-200">
+              <h3 class="font-bold py-3 text-2xl">Order review</h3>
+              <h3 class="font-bold py-3 text-2xl text-yellow-600">
+                {{ order.orderId }}
+              </h3>
+              <p class="text-blue-600 font-bold">Shipping Address</p>
+              <p class="text-gray-600 text-md font-bold">{{ order.address }}</p>
+            </div>
+            <div class="py-6 border-b-2 border-gray-200">
+              <h3 class="text-blue-600 font-bold">Payment method</h3>
+              <p class="text-black font-semibold">Payment in person</p>
+            </div>
+            <div>
+              <h4 class="text-blue-600 pt-3">Personal Details</h4>
+              <div class="flex gap-20 py-3">
+                <h3 class="text-blue-600 font-semibold">Name</h3>
+                <h3 class="font-bold md:text-xl ml-8 sm:text-sm">
+                  {{ order.firstname }} {{ order.lastname }}
+                </h3>
+              </div>
+              <div class="flex gap-20 py-3">
+                <h3 class="text-blue-600 font-semibold">Email</h3>
+                <h3 class="font-bold md:text-xl ml-8 sm:text-sm">
+                  {{ order.email }}
+                </h3>
+              </div>
+              <div class="flex gap-20 py-3">
+                <h3 class="text-blue-600 font-semibold">Phone</h3>
+                <h3 class="mr-3 font-bold md:text-xl sm:text-sm ml-8">
+                  {{ order.phone }}
+                </h3>
+                <div class="absolute right-0">
+                  <h6 class="text-blue-600 mr-7 font-bold cursor-pointer">
+                    <svg
+                      mat-button
+                      (click)="openDialog()"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-pencil-square"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shadow-xl h-auto mt-12" *ngIf="orderLength === undefined">
+          <div
+            class="m-4 border-b-2 border-b-gray-200 relative"
+            *ngFor="let item of carts"
+          >
+            <div class="flex justify-between items-center px-4">
+              <div class=" ">
+                <img [src]="item.images[0]" alt="" class="w-[121px]" />
+              </div>
+              <div class="flex flex-row mt-7">
+                <h3 class="font-bold text-xl">${{ item.price }}</h3>
+                <p class="text-xl font-bold text-gray pb-5 ml-3 text-red-500">
+                  {{ item.cartQuantity }} item(s)
+                </p>
+              </div>
+              <div>
+                <h3 class="font-bold">${{ item.cartQuantity * item.price }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="md:col-span-1 sm:col-span-2"
+        *ngIf="orderLength === undefined"
+      >
+        <div class="shadow-xl h-auto">
+          <div class="m-3 flex flex-col py-3">
+            <div class="flex justify-between py-3 font-semibold text-gray-500">
+              <div>Subtotal</div>
+              <div>${{ subtotal }}</div>
+            </div>
+            <div class="flex justify-between py-3 font-semibold text-gray-500">
+              <div>Shipping Fee</div>
+              <div>$20</div>
+            </div>
+            <div class="flex justify-between py-3 font-semibold text-gray-500">
+              <div>Coupon</div>
+              <div>No</div>
+            </div>
+            <div class="flex justify-between py-5 font-bold">
+              <div class="text-2xl">TOTAL</div>
+              <div class="text-bold text-2xl">${{ subtotal }}</div>
+            </div>
+            <button
+              class="w-full bg-blue-500 p-3 text-white rounded-lg"
+              (click)="openPaymentPopup(subtotal)"
+            >
+              PLACE ORDER
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

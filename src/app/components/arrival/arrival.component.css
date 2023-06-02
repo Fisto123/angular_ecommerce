@@ -1,0 +1,67 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.carousel-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: block;
+}
+
+.slide {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product {
+  flex: 0 0 20%; /* Set width to accommodate 5 products per slide */
+  text-align: center;
+  margin: 0 10px;
+}
+
+.product img {
+  width: 100%;
+  max-height: 200px;
+}
+.arrow-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.arrow-container .arrow-left,
+.arrow-container .arrow-right {
+  cursor: pointer;
+  padding: 5px;
+  background-color: #ccc;
+}
+
+.arrow-container .arrow-left i,
+.arrow-container .arrow-right i {
+  color: #fff;
+}
+
+.carousel-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: block;
+}
+
+.slide {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product {
+  flex: 0 0 20%;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.product img {
+  width: 100%;
+  max-height: 200px;
+}

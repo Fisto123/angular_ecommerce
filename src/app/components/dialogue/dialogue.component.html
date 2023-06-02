@@ -1,0 +1,199 @@
+<form
+  [formGroup]="myForm"
+  class="fixed top-[20%] left-[30%] bg-slate-200 w-1/3 h-2/4"
+>
+  <div class="flex justify-between m-4">
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-arrow-left"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+        />
+      </svg>
+    </div>
+    <div>
+      <svg
+        mat-button
+        [mat-dialog-close]="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-circle"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+        />
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+        />
+      </svg>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex flex-col justify-around gap-3 mt-10 ml-4">
+      <div>
+        <input
+          type="text"
+          pInputText
+          class="bg-gray-300 shadow-xl p-2"
+          placeholder="username"
+          formControlName="username"
+          required
+        />
+        <div
+          *ngIf="fc['username'].touched && fc['username'].invalid"
+          class="text-red-400 text-xs"
+        >
+          <div
+            *ngIf="fc['username'].errors && fc['username'].errors['required']"
+            class="mx-auto items-center text-center"
+          >
+            <h3 class="font-bold text-center text-white-400">
+              username is required***
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div>
+        <input
+          pInputText
+          class="bg-gray-300 shadow-xl p-2"
+          placeholder="email"
+          type="email"
+          formControlName="email"
+        />
+        <div
+          *ngIf="fc['email'].touched && fc['email'].invalid"
+          class="text-red-400 text-xs"
+        >
+          <div
+            *ngIf="fc['email'].errors && fc['email'].errors['required']"
+            class="mx-auto items-center text-center"
+          >
+            <h3 class="font-bold text-center text-white-400">
+              email is required***
+            </h3>
+          </div>
+
+          <div
+            *ngIf="fc['email'].errors && fc['email'].errors['maxlength']"
+            class="font-bold text-red-400 text-xs text-start"
+          >
+            email mustnt be more than 20**
+          </div>
+        </div>
+      </div>
+      <div>
+        <input
+          pInputText
+          class="bg-gray-300 shadow-xl p-2"
+          placeholder="phone"
+          type="number"
+          formControlName="phone"
+        />
+        <div
+          *ngIf="fc['phone'].touched && fc['phone'].invalid"
+          class="text-red-400 text-xs"
+        >
+          <div
+            *ngIf="fc['phone'].errors && fc['phone'].errors['required']"
+            class="mx-auto items-center text-center"
+          >
+            <h3 class="font-bold text-center text-white-400">
+              phone is required***
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div>
+        <input
+          pInputText
+          class="bg-gray-300 shadow-xl p-2"
+          placeholder="lastname"
+          type="text"
+          formControlName="lastname"
+        />
+        <div
+          *ngIf="fc['lastname'].touched && fc['lastname'].invalid"
+          class="text-red-400 text-xs"
+        >
+          <div
+            *ngIf="fc['lastname'].errors && fc['lastname'].errors['required']"
+            class="mx-auto items-center text-center"
+          >
+            <h3 class="font-bold text-center text-white-400">
+              lastname is required***
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-around gap-3 mt-10 ml-4">
+      <div>
+        <input
+          type="text"
+          pInputText
+          class="bg-gray-300 shadow-xl p-2"
+          placeholder="firstname"
+          formControlName="firstname"
+        />
+        <div
+          *ngIf="fc['firstname'].touched && fc['firstname'].invalid"
+          class="text-red-400 text-xs"
+        >
+          <div
+            *ngIf="fc['firstname'].errors && fc['firstname'].errors['required']"
+            class="mx-auto items-center text-center"
+          >
+            <h3 class="font-bold text-center text-white-400">
+              firstname is required***
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          class="bg-gray-300 shadow-xl p-2"
+          formControlName="address"
+          placeholder="Enter your address"
+        ></textarea>
+
+        <div
+          *ngIf="fc['address'].touched && fc['address'].invalid"
+          class="text-red-400 text-xs"
+        >
+          <div
+            *ngIf="fc['address'].errors && fc['address'].errors['required']"
+            class="mx-auto items-center text-center"
+          >
+            <h3 class="font-bold text-center text-white-400">
+              address is required***
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center py-3">
+    <button
+      [mat-dialog-close]="true"
+      class="sm:w-1/2 md:w-1/4 mx-auto md:p-2 sm:p-1 rounded-md text-white text-center bg-[#40BFFF] font-bold"
+      [disabled]="myForm.invalid"
+      (click)="submitForm(myForm.value)"
+    >
+      SUBMIT
+    </button>
+  </div>
+</form>

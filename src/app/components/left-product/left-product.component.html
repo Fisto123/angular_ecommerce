@@ -1,0 +1,42 @@
+<div>
+  <div *ngIf="loading">
+    <p-progressSpinner
+      styleClass="w-4rem h-4rem"
+      strokeWidth="8"
+      fill="var(--surface-ground)"
+      animationDuration=".5s"
+    ></p-progressSpinner>
+  </div>
+  <div class="border w-full h-full mx-auto">
+    <div class="bg-white w-full h-full" *ngIf="!loading">
+      <img
+        [src]="images?.images[0]"
+        alt=""
+        class="w-[450px] h-[450px] mx-auto"
+      />
+    </div>
+  </div>
+  <div class="flex justify-between py-3" *ngIf="!loading">
+    <div class="bg-white shadow-lg py-4">
+      <img
+        [src]="images?.images[0]"
+        alt="img"
+        class="w-[111px] h-[111px] mx-auto"
+      />
+    </div>
+    <div class="bg-white shadow-lg py-4">
+      <img
+        [src]="images?.images[1]"
+        alt="img"
+        class="w-[111px] h-[111px] mx-auto"
+      />
+    </div>
+    <div class="bg-white shadow-lg py-4">
+      <img
+        [src]="images?.images[2]"
+        alt="img"
+        class="w-[111px] h-[111px] mx-auto"
+      />
+    </div>
+  </div>
+</div>

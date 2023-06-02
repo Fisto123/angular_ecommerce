@@ -1,0 +1,80 @@
+<div class="w-full h-auto">
+  <div class="p-4 flex flex-col">
+    <div class="flex justify-between">
+      <h3 class="font-bold tracking-widest md:m-0">
+        {{ SingleProduct?.name }}
+      </h3>
+      <svg
+        style="color: orange"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-heart-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+        />
+      </svg>
+    </div>
+    <p class="text-red-600 font-bold tracking-wider pt-1 md:m-0">
+      ${{ SingleProduct?.price }}
+    </p>
+    <div class="md:text-start s">
+      <div class="flex-flex-col py-6">
+        <div class="max-w-[550px] md:m-0 md:px-0">
+          <div class="flex">
+            <h5 class="py-2 text-sm mr-4 md:px-0">Availability:</h5>
+            <h5 class="py-2 text-sm">{{ SingleProduct?.inStock }} stock(s)</h5>
+          </div>
+          <div class="flex">
+            <h5 class="py-2 text-sm mr-4 md:px-0">Category:</h5>
+            <h5 class="py-2 text-sm">
+              {{ SingleProduct?.category }}
+            </h5>
+          </div>
+          <div class="flex">
+            <h5 class="py-2 text-sm mr-4 md:px-0">Free shipping:</h5>
+            <h5 class="py-2 text-sm font-bold">0</h5>
+          </div>
+        </div>
+
+        <div class="bg-gray-100 w-[100px] mt-6 p-2 flex justify-between md:m-0">
+          <h3
+            class="text-blue-500 cursor-pointer text-xl"
+            (click)="decrement()"
+          >
+            -
+          </h3>
+          <h3 class="font-bold text-xl text-red">{{ cartQuantity }}</h3>
+          <h3
+            class="text-blue-500 cursor-pointer text-xl"
+            (click)="increment()"
+          >
+            +
+          </h3>
+        </div>
+        <div class="flex gap-4 mt-4 w-[270px] sm:mx-auto md:m-0">
+          {{ SingleProduct?.color }}
+        </div>
+        <div class="mt-7">
+          <button
+            [hidden]="loading"
+            class="bg-[#33A0FF] w-full items-center text-center text-white p-3 rounded-md"
+            (click)="addToCart(SingleProduct, cartQuantity)"
+          >
+            ADD TO CART
+          </button>
+        </div>
+        <p class="text-sm font-semibold py-4">
+          {{ SingleProduct?.desc }}
+        </p>
+        <div className="py-0 relative w-full bg-black">
+          <app-accordion [description]="SingleProduct?.desc"></app-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

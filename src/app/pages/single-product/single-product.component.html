@@ -1,0 +1,56 @@
+<div class="w-full h-auto" #productElement>
+  <div class="max-w-[1240px] mx-auto">
+    <div class="mt-10 py-7 max-w-[60px]">
+      <ul
+        class="flex justify-between font-semi-bold text-gray-600 gap-2 font-semibold"
+      >
+        <li>Home</li>
+        <li>/</li>
+        <li class="cursor-pointer">Products</li>
+        <li>/</li>
+        <li>Product</li>
+      </ul>
+    </div>
+    <div class="grid md:grid-cols-2 bg-white h-auto gap-6">
+      <div class="h-full w-full">
+        <app-left-product
+          [images]="products$"
+          [loading]="loading"
+        ></app-left-product>
+      </div>
+      <div class="h-full w-full bg-white shadow-xl rounded-lg">
+        <app-right-product
+          [SingleProduct]="products$"
+          [loading]="loading"
+        ></app-right-product>
+      </div>
+    </div>
+    <div class="mt-5 py-5">
+      <h4 class="font-bold p-5 border-b-2 border-b-gray">
+        RECCOMENDED FOR YOU
+      </h4>
+      <div *ngIf="loading">
+        <p-progressSpinner
+          styleClass="w-4rem h-4rem"
+          strokeWidth="8"
+          fill="var(--surface-ground)"
+          animationDuration=".5s"
+        ></p-progressSpinner>
+      </div>
+      <div class="grid lg:grid-cols-4 md:grid-cols-2 p-2 gap-20">
+        <ng-container *ngIf="recommendedProd$ | async as products">
+          <div class="" *ngFor="let item of products">
+            <app-card
+              [routerLink]="['/product', item._id]"
+              (click)="scrollToTop()"
+              class="w-42 h-64 min-h-10"
+              [title]="item.name"
+              [img]="item.images[0]"
+              [price]="item.price"
+            ></app-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
